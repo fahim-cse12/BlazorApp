@@ -1,0 +1,54 @@
+﻿@page "/orderlist"
+@using Blazor.Shared.Models
+@using Blazor.UI.IService;
+@inject IOrderService orderService
+
+<h3>Order List</h3>
+
+<a class="btn btn-success btn-sm mb-3" href="neworder">New Order</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order Id</th>
+            <th>Name</th>
+            <th>State</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in orderList)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.State</td>
+      
+                <td>
+                    <a class="btn btn-primary btn-sm" href="neworder/@item.Id"><i class="oi oi-pencil"></i></a>
+                    <button type="button" class="btn btn-danger btn-sm ms-2" @onclick="(()=> Delete(item.Id))">
+                        <i class="oi oi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    List<OrderDto> orderList = new List<OrderDto>();
+    protected override async Task OnInitializedAsync()
+    {
+        orderList = await orderService.GetAllOrderList();
+    }
+
+    private async Task Delete(int id)
+    {
+        var result = await orderService.DeleteOrder(id);
+        if(result != 0)
+        {
+            orderList = await orderService.GetAllOrderList();
+        }
+    }
+
+}

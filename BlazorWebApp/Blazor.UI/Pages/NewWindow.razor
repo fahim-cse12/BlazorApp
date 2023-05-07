@@ -1,0 +1,87 @@
+﻿@page "/newwindow" 
+@page "/newwindow/{id:int}"
+@using Blazor.Shared.Models;
+@using Blazor.UI.IService;
+@inject IWindowService windowService;
+@inject IOrderService orderService;
+@inject NavigationManager navigation;
+
+
+<h3>@title Window</h3>
+
+<EditForm Model="windowDto" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+
+    <div class="mb-3" style="display:none">
+        <InputNumber class="form-control" @bind-Value="windowDto.Id"></InputNumber>       
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Oder</label>
+        <InputSelect class="form-select" @bind-Value="windowDto.OrderId">
+            <option value="0">-- select order --</option>
+            @foreach(var item in orderList)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => windowDto.Id)"></ValidationMessage>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Name</label>
+        <InputText class="form-control" @bind-Value="windowDto.Name"></InputText>
+        <ValidationMessage For="@(() => windowDto.Name)"></ValidationMessage>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Quantity Of Windows</label>
+        <InputNumber class="form-control" @bind-Value="windowDto.QuantityOfWindows"></InputNumber>
+        <ValidationMessage For="@(() => windowDto.QuantityOfWindows)"></ValidationMessage>
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Total SubElements</label>
+        <InputNumber class="form-control" @bind-Value="windowDto.TotalSubElements"></InputNumber>
+        <ValidationMessage For="@(() => windowDto.TotalSubElements)"></ValidationMessage>
+    </div>
+
+    <button type="submit" class="btn btn-primary">@btnText</button>
+    <a class="btn btn-warning" href="windowlist">Back</a>
+
+</EditForm>
+
+@code {
+    [Parameter]
+    public int id { get; set; } = 0;
+    string title = string.Empty;
+    string btnText = string.Empty;
+    WindowDto windowDto = new WindowDto();
+    List<OrderDto> orderList = new List<OrderDto>();
+    protected override async Task OnInitializedAsync()
+    {
+        if (id != 0)
+        {
+            windowDto = await windowService.GetWindowById(id);
+            btnText = "Update";
+            title = "Edit ";
+        }
+        else
+        {
+            btnText = "Save";
+            title = "New ";
+        }
+        orderList = await orderService.GetAllOrderList();
+    }
+
+
+    private async Task OnValidSubmit()
+    {
+        int generatedId = 0;
+        
+        generatedId = await windowService.CreateOrUpdateWindow(windowDto);
+       
+
+        if (generatedId != 0)
+            navigation.NavigateTo("/windowlist");
+        
+    }
+}

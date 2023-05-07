@@ -1,0 +1,73 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = Blazor.UI
+build_property.RootNamespace = Blazor.UI
+build_property.ProjectDir = G:\Fahim\Blazor app\BlazorWebApp\Blazor.UI\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = G:\Fahim\Blazor app\BlazorWebApp\Blazor.UI
+build_property._RazorSourceGeneratorDebug = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Pages/NewElement.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3RWxlbWVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Pages/NewOrder.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3T3JkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Pages/NewWindow.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3V2luZG93LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Pages/OrderList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Pages/SubElementList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3ViRWxlbWVudExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Pages/WindowList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2luZG93TGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-0q3gt2q9li
+
+[G:/Fahim/Blazor app/BlazorWebApp/Blazor.UI/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-u42svwcdbe

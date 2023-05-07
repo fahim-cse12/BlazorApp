@@ -1,0 +1,12 @@
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\bin\Debug\net7.0\Blazor.Shared.deps.json
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\bin\Debug\net7.0\Blazor.Shared.dll
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\bin\Debug\net7.0\Blazor.Shared.pdb
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\obj\Debug\net7.0\Blazor.Shared.csproj.AssemblyReference.cache
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\obj\Debug\net7.0\Blazor.Shared.GeneratedMSBuildEditorConfig.editorconfig
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\obj\Debug\net7.0\Blazor.Shared.AssemblyInfoInputs.cache
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\obj\Debug\net7.0\Blazor.Shared.AssemblyInfo.cs
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\obj\Debug\net7.0\Blazor.Shared.csproj.CoreCompileInputs.cache
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\obj\Debug\net7.0\Blazor.Shared.dll
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\obj\Debug\net7.0\refint\Blazor.Shared.dll
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\obj\Debug\net7.0\Blazor.Shared.pdb
+G:\Fahim\Blazor app\BlazorWebApp\Blazor.Shared\obj\Debug\net7.0\ref\Blazor.Shared.dll

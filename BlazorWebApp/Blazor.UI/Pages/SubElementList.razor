@@ -1,0 +1,60 @@
+﻿@page "/subelementlist"
+
+@using Blazor.Shared.Models;
+@using Blazor.UI.IService;
+@inject ISubElementService elementService
+
+<h3>Window List</h3>
+
+<a class="btn btn-success btn-sm mb-3" href="newelement">New Sub-Element</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Element Id</th>
+            <th>Window Id</th>
+            <th>Element</th>
+            <th>Type</th>
+            <th>Width</th>
+            <th>Height</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in elementList)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.WindowId</td>
+                <td>@item.Element</td>
+                <td>@item.Type</td>
+                <td>@item.Width</td>
+                <td>@item.Height</td>
+
+                <td>
+                    <a class="btn btn-primary btn-sm" href="newelement/@item.Id"><i class="oi oi-pencil"></i></a>
+                    <button type="button" class="btn btn-danger btn-sm ms-2" @onclick="(()=> Delete(item.Id))">
+                        <i class="oi oi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    List<SubElementDto> elementList = new List<SubElementDto>();
+    protected override async Task OnInitializedAsync()
+    {
+        elementList = await elementService.GetAllElementList();
+    }
+
+    private async Task Delete(int id)
+    {
+        var result = await elementService.DeleteElement(id);
+        if (result != 0)
+        {
+            elementList = await elementService.GetAllElementList();
+        }
+    }
+}

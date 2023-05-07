@@ -1,0 +1,92 @@
+﻿@page "/newelement"
+@page "/newelement/{id:int}"
+
+@using Blazor.Shared.Models;
+@using Blazor.UI.IService
+@inject ISubElementService elementService
+@inject IWindowService windowService
+@inject NavigationManager navigation;
+
+<h3>@title Element</h3>
+
+<EditForm Model="elementDto" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+
+    <div class="mb-3" style="display:none">
+        <InputNumber class="form-control" @bind-Value="elementDto.Id"></InputNumber>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Window</label>
+        <InputSelect class="form-select" @bind-Value="elementDto.WindowId">
+            <option value="0">-- select window --</option>
+            @foreach (var item in windowList)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => elementDto.WindowId)"></ValidationMessage>
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Element</label>
+        <InputNumber class="form-control" @bind-Value="elementDto.Element"></InputNumber>
+        <ValidationMessage For="@(() => elementDto.Element)"></ValidationMessage>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Type</label>
+        <InputText class="form-control" @bind-Value="elementDto.Type"></InputText>
+        <ValidationMessage For="@(() => elementDto.Type)"></ValidationMessage>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Width</label>
+        <InputNumber class="form-control" @bind-Value="elementDto.Width"></InputNumber>
+        <ValidationMessage For="@(() => elementDto.Width)"></ValidationMessage>
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Height</label>
+        <InputNumber class="form-control" @bind-Value="elementDto.Height"></InputNumber>
+        <ValidationMessage For="@(() => elementDto.Height)"></ValidationMessage>
+    </div>
+
+    <button type="submit" class="btn btn-primary">@btnText</button>
+    <a class="btn btn-warning" href="subelementlist">Back</a>
+
+</EditForm>
+
+@code {
+    [Parameter]
+    public int id { get; set; } = 0;
+    string title = string.Empty;
+    string btnText = string.Empty;
+    SubElementDto elementDto = new SubElementDto();
+    List<WindowDto> windowList = new List<WindowDto>();
+    protected override async Task OnInitializedAsync()
+    {
+        if (id != 0)
+        {
+            elementDto = await elementService.GetElementById(id);
+            btnText = "Update";
+            title = "Edit ";
+        }
+        else
+        {
+            btnText = "Save";
+            title = "New ";
+        }
+        windowList = await windowService.GetAllWindowList();
+    }
+
+
+    private async Task OnValidSubmit()
+    {
+        int generatedId = 0;
+
+        generatedId = await elementService.CreateOrUpdateElement(elementDto);
+
+
+        if (generatedId != 0)
+            navigation.NavigateTo("/subelementlist");
+
+    }
+}

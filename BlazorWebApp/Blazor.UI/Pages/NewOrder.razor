@@ -1,0 +1,68 @@
+﻿@page "/neworder"
+@page "/neworder/{id:int}"
+@using Blazor.Shared.Models;
+@using Blazor.UI.IService;
+@inject IOrderService orderService
+@inject NavigationManager navigation;
+
+<h2>@title Order</h2>
+
+<EditForm Model="orderDto" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+
+    <div class="mb-3" style="display:none">
+        <InputNumber class="form-control" @bind-Value="orderDto.Id"></InputNumber>       
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Name</label>
+        <InputText class="form-control" @bind-Value="orderDto.Name"></InputText>
+        <ValidationMessage For="@(() => orderDto.Name)"></ValidationMessage>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">State</label>
+        <InputText class="form-control" @bind-Value="orderDto.State"></InputText>
+        <ValidationMessage For="@(() => orderDto.State)"></ValidationMessage>
+    </div>
+
+    <button type="submit" class="btn btn-primary">@btnText</button>
+    <a class="btn btn-warning" href="orderlist">Back</a>
+
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public int id { get; set; } = 0;
+    string title = string.Empty;
+    string btnText = string.Empty;
+    OrderDto orderDto = new OrderDto();
+    protected override async Task OnInitializedAsync()
+    {
+        if (id != 0)
+        {
+            orderDto = await orderService.GetOrderById(id);
+            btnText = "Update";
+            title = "Edit ";
+        }
+        else
+        {
+            btnText = "Save";
+            title = "New ";
+        }
+    }
+
+
+    private async Task OnValidSubmit()
+    {
+        int generatedId = 0;
+        
+        generatedId = await orderService.CreateOrUpdateOrder(orderDto);
+       
+
+        if (generatedId != 0)
+            navigation.NavigateTo("/orderlist");
+        
+    }
+}

@@ -1,0 +1,57 @@
+﻿@page "/windowlist"
+@using Blazor.Shared.Models;
+@using Blazor.UI.IService;
+@inject IWindowService windowService
+
+<h3>Window List</h3>
+
+<a class="btn btn-success btn-sm mb-3" href="newwindow">New Window</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Window Id</th>
+            <th>Window Name</th>
+            <th>Quantity Of Windows</th>
+            <th>Total SubElements</th>
+            <th>Order Id</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in windowList)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.QuantityOfWindows</td>
+                <td>@item.TotalSubElements</td>
+                <td>@item.OrderId</td>
+                
+                <td>
+                    <a class="btn btn-primary btn-sm" href="newwindow/@item.Id"><i class="oi oi-pencil"></i></a>
+                    <button type="button" class="btn btn-danger btn-sm ms-2" @onclick="(()=> Delete(item.Id))">
+                        <i class="oi oi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    List<WindowDto> windowList = new List<WindowDto>();
+    protected override async Task OnInitializedAsync()
+    {
+        windowList = await windowService.GetAllWindowList();
+    }
+
+    private async Task Delete(int id)
+    {
+        var result = await windowService.DeleteWindow(id);
+        if (result != 0)
+        {
+            windowList = await windowService.GetAllWindowList();
+        }
+    }
+}
